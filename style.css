@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+   background: url('MacBook Air-3.png') no-repeat center center;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  position: relative;
+}
+
+
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 9px 10px;
+    text-decoration: none;
+    background-color: #483D8B;
+}
+
+.navbar a:hover {
+background-color: #63446B;
+transform: scale(1.05);
+border-radius: 4px;
+cursor: pointer;
+
+}
+
+.navbar a.sign{
+
+  float: right;
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+.section-one{
+    background: url('ppppp.jpeg') no-repeat center center;
+    background-size: cover;
+}
+
+
+.section-two{
+ background: url('second.jpeg') no-repeat center center;
+ background-size: cover;
+display: flex;
+color: black;
+padding-left: 30px;
+
+}
+
+.section-three{
+background-color: white;
+ background-size: cover;
+ height: 15vh;
+  scroll-snap-align: start;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+
+.text { /*for what will you study*/
+
+  color: white;
+  font-size: 50px;
+  font-weight: bold,initial;
+  line-height: 1.5;
+   text-align: left;
+   padding: 30px;
+  
+}
+
+.study {
+  color: #3c3c8a;
+}
+
+.logo {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  color: black;
+  font-size: 20px;
+  font-weight: bolder;
+
+
+

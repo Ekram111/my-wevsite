@@ -1,0 +1,130 @@
+body {
+  background-color: #ffffff; /* أبيض كامل */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.timer-container {
+  background-color: #f3e5f5; /* بنفسجي فاتح خفيف داخل الصندوق */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  color: #6a0dad; /* بنفسجي غامق للعنوان */
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.timer {
+  font-size: 48px;
+  color: #333333; /* رمادي غامق للوقت */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.buttons button {
+  background-color: #9d5ce0; /* لون الأزرار بنفسجي */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 8px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.buttons button:hover {
+  background-color: #7e43c1;
+
+
+
+
+
+
+
+
+.tip-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid purple;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  box-shadow: 0 4px 10px darkgrey;
+  text-decoration: none;
+  margin-top: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tip-box h3 {
+  color: #333;
+  margin: 0;
+  font-size: 24px;
+}
+
+.tip-box:hover {
+  background-color: #f3d9ff;
+}
+
+.tip-border {
+  border: 2px solid purple;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #dfcdfb;
+  width: 80%;
+  max-width: 900px;
+  box-shadow: 0 8px 20px darkgrey;
+  font-size: 18px;
+  color: #555;
+  position: relative;
+}
+
+.tip-border legend {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0 10px;
+  color: purple;
+}
+
+.tip-border ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.tip-border li {
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+.corner-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 8px;
+}
+.imagep {
+float: right;
+position: relative;
+width: 220px;
+height: 290px;
+margin: 0 0 5px 8px ;
+
+}

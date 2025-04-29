@@ -1,0 +1,59 @@
+.bo{text-align: center; }
+*{padding: 15px;}
+form{
+   background-color:rgba(197, 153, 182,0.5);
+}
+h1{text-shadow: 2px 2px 5px rgb(230, 157, 184); font-style: italic}
+.rt{font-size: 20px; font-style: italic}
+.is{
+    width: 100%;
+  padding: 12px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;}
+  .la{font-size: 20px; float: left; }
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+}
+input[type=reset]:link,input[type=reset]:vistid{
+  color: white;
+  padding: 5px 10px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+}
+input[type=reset]:hover,input[type=reset]:active{
+  background-color:rgb(255, 247, 243);
+}
+input[type=submit]:link,input[type=submit]:vistid{
+  color: white;
+  padding: 5px 10px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+}
+input[type=submit]:hover,input[type=submit]:active{
+  background-color:rgb(255, 247, 243);
+}
+input[type=submit],input[type=reset]{
+   background-color:rgb(230, 178, 186);
+   border: none;
+  border-radius: 5px;
+}
+#ir{padding: 5px 10px 15px 10px;}
+
+ul{
+  list-style-type: none; 
+}
+div{background-color:rgb(241, 231, 231);}
+a{text-decoration: none;}
+.qw:hover{text-decoration: underline;}

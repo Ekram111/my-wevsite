@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+  <div class="form-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Student Icon" class="form-icon">
+    <h2>Create Your Account</h2>
+    <p class="welcome-text">Start your learning journey with us!</p>
+    <form id="signupForm" onsubmit="return validateForm()">
+      <input type="text" id="firstName" placeholder="First Name" required>
+      <input type="text" id="lastName" placeholder="Last Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <div id="emailError" class="error-message"></div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var email = document.getElementById("email").value;
+      var emailError = document.getElementById("emailError");
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(email)) {
+        emailError.textContent = "Please enter a valid email address.";
+        return false;
+      } else {
+        emailError.textContent = "";
+        window.location.href = "fawzia.html"; // Replace with your real link
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

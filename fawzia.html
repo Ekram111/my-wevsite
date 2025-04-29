@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Study Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f5fc;
+      color: #333;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .main-container {
+      background-color: #f3e9fa;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1000px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .timer-container, .box, .calculator, #small-box, #big-box {
+      margin-top: 30px;
+    }
+
+    .timer {
+      font-size: 36px;
+      margin: 20px 0;
+    }
+
+    .buttons button {
+      background-color: #a066d1;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .buttons button:hover {
+      background-color: #8e4ccc;
+    }
+
+    .box {
+      border: 2px solid #c6a3d8;
+      padding: 20px;
+      width: 300px;
+      margin: 0 auto;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #f3e9fa;
+    }
+
+    .box:hover {
+      background-color: #e9d8f4;
+    }
+
+    #scheduleTable {
+      display: none;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #c6a3d8;
+      padding: 10px;
+      vertical-align: top;
+      background-color: #fff;
+    }
+
+    th {
+      background-color: #d9b3f0;
+      color: #4a235a;
+    }
+
+    td[contenteditable="true"] {
+      background-color: #fdf9ff;
+      cursor: text;
+      height: 100px;
+    }
+
+    .calculator {
+      background-color: #d9b3ff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 400px;
+      margin: 30px auto;
+    }
+
+    .calculator h1,
+    .calculator #result {
+      color: #ffffff;
+    }
+
+    input {
+      padding: 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 85%;
+      text-align: center;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .course {
+      background-color: #f2e6ff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .remove-button {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #a066d1;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #8e4ccc;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .tip-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border: 2px solid purple;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      height: 100px;
+      text-align: center;
+      box-shadow: 0 4px 10px darkgrey;
+      text-decoration: none;
+      margin: 20px auto;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .tip-box:hover {
+      background-color: #f3d9ff;
+    }
+
+    .tip-box h3 {
+      color: #333;
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .tip-border {
+      border: 2px solid purple;
+      border-radius: 12px;
+      padding: 20px;
+      background-color: #dfcdfb;
+      width: 80%;
+      max-width: 900px;
+      box-shadow: 0 8px 20px darkgrey;
+      font-size: 18px;
+      color: #555;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    .tip-border legend {
+      font-size: 22px;
+      font-weight: bold;
+      padding: 0 10px;
+      color: purple;
+    }
+
+    .tip-border ul {
+      padding-left: 20px;
+      list-style-type: disc;
+      text-align: left;
+    }
+
+    .tip-border li {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .imagep {
+      float: right;
+      width: 220px;
+      height: 290px;
+      margin: 0 0 5px 8px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+  <!-- التايمر -->
+  <div class="timer-container">
+    <h1>Study Timer</h1>
+    <div class="timer" id="timer">00:00:00</div>
+    <div class="buttons">
+      <button onclick="startTimer()">Start</button>
+      <button onclick="stopTimer()">Stop</button>
+      <button onclick="resetTimer()">Reset</button>
+    </div>
+  </div>
+
+  <!-- الجدول -->
+  <div class="box" onclick="toggleSchedule()">
+    <h2>Study Schedule</h2>
+    <p>Click to show/hide</p>
+  </div>
+
+  <div id="scheduleTable">
+    <table>
+      <tr>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+      </tr>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- حاسبة المعدل -->
+  <div class="calculator">
+    <h1>GPA Calculator</h1>
+    <div id="courses"></div>
+    <button onclick="addCourse()">➕ ADD Subject</button>
+    <button onclick="calculateGPA()">🧮 CALC</button>
+    <button onclick="resetCalculator()">🔄 AGAIN</button>
+    <div id="result"></div>
+  </div>
+
+  <!-- النصائح -->
+  <div id="small-box" class="tip-box" onclick="showTips()">
+    <h3>Study Tips</h3>
+  </div>
+
+  <fieldset id="big-box" class="tip-border" style="display: none;">
+    <legend>Study Tips</legend>
+    <img src="huda.jpeg" class="imagep">
+    <ul>
+      <li><b>Pomodoro Technique:</b> Study for 25 minutes, then take a 5-minute break. Repeat this cycle four times, then take a longer break of 15–30 minutes.This helps keep your brain fresh and prevents burnout while studying for long periods</li>
+      <li><b>Dark Noise and Light Noise:</b> When studying, external sounds like distant conversations (light noise) or sudden loud sounds (dark noise) can break your focus.To stay concentrated, try using noise-canceling headphones or play soft background music that doesn’t distract you.</li>
+      <li><b>3-2-1 Method:</b> After each study session, write down three things you learned, two interesting facts, and one question you still have.This method strengthens your understanding and points out areas you need to review more.</li>
+      <li><b>Spaced Repetition:</b> Instead of cramming, review your study material at spaced intervals.one day later, then three days, then seven days, and so on. This technique helps move knowledge from short-term to long-term memory effectively.</li>
+      <li><b>Feynman Technique:</b> Try teaching the topic you just learned to someone else, using very simple language.If you struggle to explain any part, review and study that part again. Teaching is one of the best ways to deepen understanding</li>
+      <li><b>Active Recall:</b> Test yourself actively without looking at your notes.For example, close your book and try to recall the information. This forces your brain to strengthen the memory and highlights what you need to work on.</li>
+      <li><b>Cornell Note-Taking System:</b> Organize your notes by dividing your paper into three sections. a large area for detailed notes, a margin for keywords, and a bottom section for a brief summary. This system helps keep your notes clean and easy to review.</li>
+    </ul>
+  </fieldset>
+
+</div>
+
+<script>
+  let timer;
+  let seconds = 0;
+
+  function updateDisplay() {
+    const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(seconds % 60).padStart(2, '0');
+    document.getElementById("timer").textContent = `${hrs}:${mins}:${secs}`;
+  }
+
+  function startTimer() {
+    if (!timer) {
+      timer = setInterval(() => {
+        seconds++;
+        updateDisplay();
+      }, 1000);
+    }
+  }
+
+  function stopTimer() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function resetTimer() {
+    stopTimer();
+    seconds = 0;
+    updateDisplay();
+  }
+
+  updateDisplay();
+
+  function toggleSchedule() {
+    var table = document.getElementById("scheduleTable");
+    table.style.display = (table.style.display === "none") ? "block" : "none";
+  }
+
+  const gradePoints = {
+    'A+': 4.0, 'A': 4.0, 'B+': 3.3, 'B': 3.0,
+    'C+': 2.3, 'C': 2.0, 'D+': 1.3, 'D': 1.0, 'F': 0.0
+  };
+
+  function addCourse() {
+    const coursesDiv = document.getElementById('courses');
+    const courseDiv = document.createElement('div');
+    courseDiv.className = 'course';
+    courseDiv.innerHTML = `
+      <button class="remove-button" onclick="removeCourse(this)">×</button>
+      <input type="text" placeholder="اسم المادة" class="course-name">
+      <input type="number" placeholder="عدد الساعات" class="course-hours" min="0" step="0.5">
+      <input type="text" placeholder="التقدير (A+,A,B+,B,...)" class="course-grade">
+    `;
+    coursesDiv.appendChild(courseDiv);
+  }
+
+  function removeCourse(button) {
+    button.parentElement.remove();
+  }
+
+  function calculateGPA() {
+    const courseNames = document.getElementsByClassName('course-name');
+    const courseHours = document.getElementsByClassName('course-hours');
+    const courseGrades = document.getElementsByClassName('course-grade');
+
+    let totalPoints = 0;
+    let totalHours = 0;
+    let hasError = false;
+
+    for (let i = 0; i < courseNames.length; i++) {
+      const hours = Number(courseHours[i].value);
+      const grade = courseGrades[i].value.trim().toUpperCase();
+
+      if (!hours || hours <= 0 || !(grade in gradePoints)) {
+        hasError = true;
+        break;
+      }
+
+      totalPoints += (gradePoints[grade] * hours);
+      totalHours += hours;
+    }
+
+    if (hasError || totalHours === 0) {
+      document.getElementById('result').innerText = "⚠️ تأكد من إدخال جميع البيانات بشكل صحيح.";
+      return;
+    }
+
+    const gpa = totalPoints / totalHours;
+    let appreciation = "";
+
+    if (gpa >= 3.7) appreciation = "ممتاز";
+    else if (gpa >= 3.0) appreciation = "جيد جداً";
+    else if (gpa >= 2.0) appreciation = "جيد";
+    else if (gpa >= 1.0) appreciation = "مقبول";
+    else appreciation = "راسب";
+
+    document.getElementById('result').innerText = `📚 معدلك التراكمي: ${gpa.toFixed(2)} (${appreciation})`;
+  }
+
+  function resetCalculator() {
+    document.getElementById('courses').innerHTML = '';
+    document.getElementById('result').innerText = '';
+  }
+
+  function showTips() {
+    document.getElementById('small-box').style.display = 'none';
+    document.getElementById('big-box').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
