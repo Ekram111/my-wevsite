@@ -8,7 +8,7 @@
   <style>
     /* تنسيق الفورم */
     .login-form {
-      display: none; /* مخفي في البداية */
+      display: none;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -40,7 +40,6 @@
       background-color: #45a049;
     }
 
-    /* خلفية مظللة عند فتح الفورم */
     .overlay {
       display: none;
       position: fixed;
@@ -52,7 +51,6 @@
       z-index: 999;
     }
 
-    /* تنسيق important URL */
     .important-urls {
       margin-top: 40px;
     }
@@ -67,24 +65,53 @@
     .important-urls .numbers {
       display: flex;
       flex-direction: column;
-      gap: 8px; /* تقليل الفجوة بين الأزرار */
-      align-items: flex-start; /* تعديل لتكون على اليسار */
-      margin-left: 20px; /* مسافة من اليسار */
+      gap: 8px;
+      align-items: flex-start;
+      margin-left: 20px;
     }
 
     .important-urls .whatsapp-link {
       display: inline-block;
-      padding: 6px 12px; /* تقليل حجم الحواف */
+      padding: 6px 12px;
       background-color: #483D8B;
       color: white;
       text-decoration: none;
       border-radius: 5px;
-      font-size: 19px; /* تصغير الخط */
+      font-size: 19px;
       transition: background-color 0.3s;
     }
 
     .important-urls .whatsapp-link:hover {
       background-color: #1ebe5d;
+    }
+
+    /* تحسين العرض على الجوال */
+    @media (max-width: 600px) {
+      .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .text {
+        font-size: 22px;
+        text-align: center;
+      }
+
+      .section-two h1 {
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .important-urls .whatsapp-link {
+        font-size: 16px;
+        padding: 8px;
+      }
+
+      .important-urls .numbers {
+        margin-left: 0;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -135,29 +162,28 @@
       <li>important-whatsApp Num ⬇️</li>
     </ul>
 
-    <!-- Important URL Section مع روابط واتساب -->
     <div class="important-urls">
-      
       <div class="numbers">
         <p>EKRAM</p>
         <a href="https://wa.me/966506460150" target="_blank" class="whatsapp-link">+966 50 123 4567</a>
         <p>HUDA</p>
-        <a href="https://wa.me/966564225569" target="_blank" class="whatsapp-link">+966 55 234 5678</a><P>FAWZIAH</P>
-        <a href="https://wa.me/966533927759" target="_blank" class="whatsapp-link">+966 53 345 6789</a><P>RANEEM</P>
-        <a href="https://wa.me/966538532140" target="_blank" class="whatsapp-link">+966 54 456 7890</a><P>ARWA</P>
-        <a href="https://wa.me/966525678901" target="_blank" class="whatsapp-link">+966 52 567 8901</a><P>ANJAD</P>
+        <a href="https://wa.me/966564225569" target="_blank" class="whatsapp-link">+966 55 234 5678</a>
+        <p>FAWZIAH</p>
+        <a href="https://wa.me/966533927759" target="_blank" class="whatsapp-link">+966 53 345 6789</a>
+        <p>RANEEM</p>
+        <a href="https://wa.me/966538532140" target="_blank" class="whatsapp-link">+966 54 456 7890</a>
+        <p>ARWA</p>
+        <a href="https://wa.me/966525678901" target="_blank" class="whatsapp-link">+966 52 567 8901</a>
+        <p>ANJAD</p>
         <a href="https://wa.me/966535067125" target="_blank" class="whatsapp-link">+966 51 678 9012</a>
         <br>
-
       </div>
     </div>
 
   </div>
 
-  <!-- Overlay background -->
   <div class="overlay" id="overlay" onclick="closeLoginForm()"></div>
 
-  <!-- Login Form -->
   <div class="login-form" id="loginForm">
     <h2>Login</h2>
     <form>
@@ -165,19 +191,19 @@
       <input type="email" id="email" placeholder="Enter your email" required>
       <input type="password" id="password" placeholder="Enter your password" required>
       <button type="button" onclick="nextStep()">Next</button>
-      <div id="error-message" style="color: darkred; margin-top: 10px;"></div> <!-- رسالة الخطأ -->
+      <div id="error-message" style="color: darkred; margin-top: 10px;"></div>
     </form>
   </div>
 
   <script>
     function openLoginForm() {
-      document.getElementById("loginForm").style.display = "block"; // يظهر الفورم
-      document.getElementById("overlay").style.display = "block"; // يظهر الخلفية المظللة
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
     }
 
     function closeLoginForm() {
-      document.getElementById("loginForm").style.display = "none"; // إخفاء الفورم
-      document.getElementById("overlay").style.display = "none"; // إخفاء الخلفية المظللة
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
     }
 
     function nextStep() {
